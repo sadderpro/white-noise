@@ -1,4 +1,12 @@
+// these are UI elements
+const playButton = document.getElementById("playButton");
+const volumeSlider = document.getElementById("volumeSlider");
+
 const audioContext = new AudioContext();
+
+// TODO: create and initialize a gainNode
+const gainNode = audioContext.createGain();
+gainNode.connect(audioContext.destination);
 
 // empty, 2 second long buffer with two channels (stereo)
 // ? could create another buffer in mono for comparison
@@ -15,13 +23,10 @@ for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
   }
 }
 
-// these are UI elements
-const playButton = document.getElementById("playButton");
-const volumeSlider = document.getElementById("volumeSlider");
 
 // to control the state of the white noise playback
 let source = null;
-// set actions when the button is pressed
+
 playButton.addEventListener("click", async () => {
   
   if (audioContext.state === "suspended") {
@@ -32,16 +37,16 @@ playButton.addEventListener("click", async () => {
     source = audioContext.createBufferSource();
     source.buffer = buffer;
     source.loop = true;
-    source.connect(audioContext.destination);
+    source.connect(gainNode); // Now we connect the gain node, and the gain node is already connected to dest.
     source.start();
   } else {
     source.stop();
-    source = null;
+    source = null; // once used, we get rid of the AudioBufferSourceNode for the next time we hit play.
   }
 
 });
 
-// Slider de volumen
-volumeSlider.addEventListener("input", () => {
-  // TODO: add gain control using a gainNode
+volumeSlider.addEventListener("input", (event) => {
+  const value = parseFloat(event.target.value);
+  gainNode.gain.setValueAtTime(Math.pow(value, 2), audioContext.currentTime);
 });
