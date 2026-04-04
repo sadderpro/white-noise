@@ -1,10 +1,12 @@
+// TODO: add logic to display debug information
+// TODO: set default gain in gainNode to match slider gain.
+
 // these are UI elements
 const playButton = document.getElementById("playButton");
 const volumeSlider = document.getElementById("volumeSlider");
 
 const audioContext = new AudioContext();
 
-// TODO: create and initialize a gainNode
 const gainNode = audioContext.createGain();
 gainNode.connect(audioContext.destination);
 
@@ -43,6 +45,8 @@ playButton.addEventListener("click", async () => {
     source.stop();
     source = null; // once used, we get rid of the AudioBufferSourceNode for the next time we hit play.
   }
+
+  playButton.classList.toggle("playing", source);
 
 });
 

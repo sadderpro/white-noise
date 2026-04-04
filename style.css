@@ -1,0 +1,16 @@
+/* TODO: change play/pause button to look more like a play/pause button */
+.iconPlay {
+  display: inline-block;
+}
+
+.iconPause {
+  display: none;
+}
+
+.playing .iconPlay {
+  display: none;
+}
+
+.playing .iconPause {
+  display: inline-block;
+}
