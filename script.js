@@ -1,5 +1,4 @@
 // TODO: add logic to display debug information
-// TODO: set default gain in gainNode to match slider gain.
 
 // these are UI elements
 const playButton = document.getElementById("playButton");
@@ -8,7 +7,11 @@ const volumeSlider = document.getElementById("volumeSlider");
 const audioContext = new AudioContext();
 
 const gainNode = audioContext.createGain();
+
+// we initialize the gain here
+gainNode.gain.setValueAtTime(Math.pow(parseFloat(volumeSlider.value), 2), audioContext.currentTime);
 gainNode.connect(audioContext.destination);
+
 
 // empty, 2 second long buffer with two channels (stereo)
 // ? could create another buffer in mono for comparison
