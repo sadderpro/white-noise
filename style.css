@@ -1,4 +1,82 @@
-/* TODO: change play/pause button to look more like a play/pause button */
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 2rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 3rem;
+}
+
+p {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* Styling the container for the white noise player */
+.main-container {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5%;
+  padding: 2rem;
+}
+
+/* -- styling play/pause button -- */
+#playButton {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  padding: 0.75rem;
+  border-radius: 50%;
+}
+
+#volumeSlider {
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* styles for debug information (slider and gain values) */
+.debugInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+
+
+/* -- styling logic to switch play/pause button -- */
 .iconPlay {
   display: inline-block;
 }
@@ -13,4 +91,10 @@
 
 .playing .iconPause {
   display: inline-block;
+}
+
+/* style footer */
+footer {
+  text-align: center;
+  align-self: flex-end;
 }
