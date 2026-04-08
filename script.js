@@ -1,10 +1,4 @@
-/*
-
-  TODO: modify gain curve function so it feels more natural
-  TODO: add sliders to modify gain per frequency range, like an equalizer does.
-
-
-*/
+//  TODO: add sliders to modify gain per frequency range, like an equalizer does.
 
 // these are UI elements
 const playButton = document.getElementById("playButton");
@@ -17,7 +11,8 @@ const audioContext = new AudioContext();
 const gainNode = audioContext.createGain();
 
 // we initialize the gain here
-gainNode.gain.setValueAtTime(Math.pow(parseFloat(volumeSlider.value), 2), audioContext.currentTime);
+let gainValue = Math.pow(parseFloat(volumeSlider.value), 2) * 0.1;
+gainNode.gain.setValueAtTime(gainValue, audioContext.currentTime);
 gainNode.connect(audioContext.destination);
 
 
@@ -63,8 +58,8 @@ playButton.addEventListener("click", async () => {
 
 volumeSlider.addEventListener("input", (event) => {
   const sliderValue = parseFloat(event.target.value);
-  const gainValue = Math.pow(sliderValue, 2);
+  gainValue = Math.pow(sliderValue, 2) * 0.1;
   gainNode.gain.setValueAtTime(gainValue, audioContext.currentTime);
-  sliderDisplay.textContent = `slider: ${sliderValue.toFixed(2)}`
-  gainDisplay.textContent = `gain: ${gainValue.toFixed(2)}`
+  sliderDisplay.textContent = `slider: ${sliderValue.toFixed(3)}`
+  gainDisplay.textContent = `gain: ${gainValue.toFixed(3)}`
 });
