@@ -1,6 +1,5 @@
 /*
 
-TODO: style slider so it's bigger
 TODO: scale play and pause symbols with button size
 
 */
@@ -68,10 +67,33 @@ p {
   border-radius: 50%;
 }
 
+
+/* Styles for the volume slider */
 #volumeSlider {
   margin-top: 2.5rem;
   margin-bottom: 3rem;
+  width: 75%;
 }
+
+/* Chrome, Edge, Safari */
+#volumeSlider::-webkit-slider-runnable-track {
+  border-radius: 0px;
+}
+
+/* Firefox */
+#volumeSlider::-moz-range-track {
+  background-color: #12b167;
+}
+
+#VolumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: #305c42;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 
 /* styles for debug information (slider and gain values) */
 .debugInfo {

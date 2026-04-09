@@ -1,4 +1,5 @@
-//  TODO: add sliders to modify gain per frequency range, like an equalizer does.
+// TODO: add sliders to modify gain per frequency range, like an equalizer does.
+// TODO: fix volume ramping to avoid clicking sound transition
 
 // these are UI elements
 const playButton = document.getElementById("playButton");
