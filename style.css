@@ -82,17 +82,13 @@ p {
   width: 75%;
 }
 
-/* Chrome, Edge, Safari */
+#volumeSlider::-moz-range-track, 
 #volumeSlider::-webkit-slider-runnable-track {
-  border-radius: 0px;
-}
-
-/* Firefox */
-#volumeSlider::-moz-range-track {
   background-color: #12b167;
 }
 
-#VolumeSlider::-moz-range-thumb {
+#VolumeSlider::-moz-range-thumb,
+#volumeSlider::-webkit-slider-thumb {
   width: 16px;
   height: 16px;
   border: none;
